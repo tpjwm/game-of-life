@@ -6,6 +6,7 @@
 #define GAME_OF_LIFE_BOARD_H
 
 #include "cinder/gl/gl.h"
+#include "core/cell.h"
 
 namespace gameoflife {
     namespace visualizer {
@@ -17,7 +18,8 @@ namespace gameoflife {
         private:
             double window_size_;
             glm::vec2 top_left_corner_;
-            const int kNumCells = 50;
+            const size_t kNumCells = 40;
+            std::vector<std::vector<Cell>> cells_;
         };
     } //namespace visualizer
 } //namespace gameoflife
