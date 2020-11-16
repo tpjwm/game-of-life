@@ -3,6 +3,7 @@
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
+#include "board.h"
 
 namespace gameoflife {
 
@@ -25,7 +26,7 @@ namespace gameoflife {
             const double kMargin = 100;
 
         private:
-
+            Board board_;
         };
 
     }  // namespace visualizer
