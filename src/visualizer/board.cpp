@@ -36,5 +36,20 @@ namespace gameoflife{
             }
 
         }
+
+        void Board::StartSimulation(const glm::vec2 &mouse_coords) {
+            for (size_t i = 0; i < kNumCells; ++i) {
+                for (size_t j = 0; j < kNumCells; ++j) {
+                    glm::vec2 top_left = cells_[i][j].GetTopLeftCorner();
+                    double size = cells_[i][j].GetSize();
+
+                    if (mouse_coords.x >= top_left.x && mouse_coords.y >= top_left.y
+                    && mouse_coords.x < top_left.x + size && mouse_coords.y < top_left.y + size){
+                        cells_[i][j].SetLife(true);
+                    }
+                }
+            }
+        }
+
     }
 }

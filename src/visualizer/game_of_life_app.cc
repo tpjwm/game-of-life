@@ -15,8 +15,8 @@ namespace gameoflife {
             update();
         }
 
-        void GameOfLifeApp::mouseDown(ci::app::MouseEvent  /*event*/) {
-
+        void GameOfLifeApp::mouseDown(ci::app::MouseEvent  event) {
+            board_.StartSimulation(event.getPos());
         }
 
         void GameOfLifeApp::update() {
