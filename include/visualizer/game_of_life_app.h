@@ -27,8 +27,14 @@ namespace gameoflife {
 
         private:
             Board board_;
+            GameEngine gameEngine_;
+            /**
+             * if true, player is allowed to draw and string is displayed
+             * if false, simulation runs and player is not allowed to shade
+             */
+            bool draw_phase_;
         };
 
-    }  // namespace visualizer
+    }  //namespace visualizer
 
-}  // namespace gameoflife
+}  //namespace gameoflife

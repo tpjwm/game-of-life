@@ -9,11 +9,13 @@
 #include "visualizer/board.h"
 
 namespace gameoflife {
-    class GameEngine{
+    class GameEngine {
     public:
+        GameEngine(const std::vector<std::vector<Cell>> &cells);
 
     private:
-
     };
+
 } //namespace gameoflife
+
 #endif //GAME_OF_LIFE_PROJECT_GAME_ENGINE_H
