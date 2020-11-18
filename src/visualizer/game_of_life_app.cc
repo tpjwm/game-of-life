@@ -31,8 +31,16 @@ namespace gameoflife {
         }
 
         void GameOfLifeApp::mouseDown(ci::app::MouseEvent event) {
+            //shade cell logic
             if (draw_phase_) {
                 board_.ShadeCell(event.getPos());
+            }
+
+            //reset button
+            if (event.getPos().x > kMargin * 2 && event.getPos().y > kWindowSize - kMargin * 0.85 &&
+            event.getPos().x < kMargin * 2 + 100 && event.getPos().y < kWindowSize - kMargin * 0.85 + 50){
+
+                board_ = Board(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin); //memory leak?
             }
         }
 
@@ -40,31 +48,35 @@ namespace gameoflife {
             ///if !draw_phase_, call gameEngine to start manipulating cells
         }
 
-        void GameOfLifeApp::DrawStartButton() {
+        void GameOfLifeApp::DrawStartButton() const {
             ci::gl::color(0.7f, 0.7f, 0.7f); //grey
 
             float window_size = 50;
 
-            glm::vec2 top_left_corner(kMargin * 6, kWindowSize - kMargin * 0.85);
+            glm::vec2 top_left_corner(kMargin * 6, kWindowSize - kMargin * 0.85); //0.85 and 6 is arbitrary
             glm::vec2 bottom_right_corner = top_left_corner + glm::vec2(window_size * 2, window_size);
 
             ci::Rectf bounding_box(top_left_corner, bottom_right_corner);
             ci::gl::drawSolidRect(bounding_box);
-            ci::gl::drawStringCentered("Start",glm::vec2(top_left_corner.x + window_size, top_left_corner.y + window_size / 3.5),
+
+            ci::gl::drawStringCentered("Start", glm::vec2(top_left_corner.x + window_size,
+                                                          top_left_corner.y + window_size / 3.5), //3.5 is arbitrary for centering
                                        ci::Color(255, 255, 255), ci::Font("Arial", 24.0f));
         }
 
-        void GameOfLifeApp::DrawResetButton() {
+        void GameOfLifeApp::DrawResetButton() const {
             ci::gl::color(0.7f, 0.7f, 0.7f); //grey
 
             float window_size = 50;
 
-            glm::vec2 top_left_corner(kMargin * 2, kWindowSize - kMargin * 0.85);
+            glm::vec2 top_left_corner(kMargin * 2, kWindowSize - kMargin * 0.85); //0.85 and 2 is arbitrary
             glm::vec2 bottom_right_corner = top_left_corner + glm::vec2(window_size * 2, window_size);
 
             ci::Rectf bounding_box(top_left_corner, bottom_right_corner);
             ci::gl::drawSolidRect(bounding_box);
-            ci::gl::drawStringCentered("Reset",glm::vec2(top_left_corner.x + window_size, top_left_corner.y + window_size / 3.5),
+
+            ci::gl::drawStringCentered("Reset", glm::vec2(top_left_corner.x + window_size,
+                                                          top_left_corner.y + window_size / 3.5), //3.5 is arbitrary for centering
                                        ci::Color(255, 255, 255), ci::Font("Arial", 24.0f));
         }
 

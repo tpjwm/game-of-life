@@ -41,7 +41,7 @@ namespace gameoflife {
         private:
             double window_size_;
             glm::vec2 top_left_corner_;
-            const size_t kNumCells = 40;
+            size_t kNumCells = 40;
             std::vector<std::vector<Cell>> cells_;
         };
 

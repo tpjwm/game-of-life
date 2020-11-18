@@ -18,9 +18,9 @@ namespace gameoflife {
 
             void draw() override;
 
-            void DrawStartButton();
+            void DrawStartButton() const;
 
-            void DrawResetButton();
+            void DrawResetButton() const;
 
             void update() override;
 
