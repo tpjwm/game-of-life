@@ -23,6 +23,10 @@ namespace gameoflife {
                                            ci::Font("Arial", 36.0f));
             }
 
+            DrawStartButton();
+
+            DrawResetButton();
+
             update();
         }
 
@@ -34,6 +38,34 @@ namespace gameoflife {
 
         void GameOfLifeApp::update() {
             ///if !draw_phase_, call gameEngine to start manipulating cells
+        }
+
+        void GameOfLifeApp::DrawStartButton() {
+            ci::gl::color(0.7f, 0.7f, 0.7f); //grey
+
+            float window_size = 50;
+
+            glm::vec2 top_left_corner(kMargin * 6, kWindowSize - kMargin * 0.85);
+            glm::vec2 bottom_right_corner = top_left_corner + glm::vec2(window_size * 2, window_size);
+
+            ci::Rectf bounding_box(top_left_corner, bottom_right_corner);
+            ci::gl::drawSolidRect(bounding_box);
+            ci::gl::drawStringCentered("Start",glm::vec2(top_left_corner.x + window_size, top_left_corner.y + window_size / 3.5),
+                                       ci::Color(255, 255, 255), ci::Font("Arial", 24.0f));
+        }
+
+        void GameOfLifeApp::DrawResetButton() {
+            ci::gl::color(0.7f, 0.7f, 0.7f); //grey
+
+            float window_size = 50;
+
+            glm::vec2 top_left_corner(kMargin * 2, kWindowSize - kMargin * 0.85);
+            glm::vec2 bottom_right_corner = top_left_corner + glm::vec2(window_size * 2, window_size);
+
+            ci::Rectf bounding_box(top_left_corner, bottom_right_corner);
+            ci::gl::drawSolidRect(bounding_box);
+            ci::gl::drawStringCentered("Reset",glm::vec2(top_left_corner.x + window_size, top_left_corner.y + window_size / 3.5),
+                                       ci::Color(255, 255, 255), ci::Font("Arial", 24.0f));
         }
 
     }  //namespace visualizer

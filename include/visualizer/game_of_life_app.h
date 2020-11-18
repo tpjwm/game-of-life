@@ -18,6 +18,10 @@ namespace gameoflife {
 
             void draw() override;
 
+            void DrawStartButton();
+
+            void DrawResetButton();
+
             void update() override;
 
             void mouseDown(ci::app::MouseEvent event) override;
