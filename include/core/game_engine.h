@@ -11,8 +11,8 @@
 namespace gameoflife {
     class GameEngine {
     public:
-        GameEngine(const std::vector<std::vector<Cell>> &cells);
-
+        GameEngine();
+        std::vector<std::vector<Cell>> UpdateCells(const std::vector<std::vector<Cell>> &cells);
     private:
     };
 

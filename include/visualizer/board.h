@@ -9,16 +9,16 @@
 
 namespace gameoflife {
     namespace visualizer {
-        class Board {
+        class BoardUI {
         public:
             /**
-             * Constructor for Board
+             * Constructor for BoardUI
              * Takes in top left corner and window size, creates square window
              *
              * @param top_left_corner - top left corner of board
              * @param window_size - length of one side of board
              */
-            Board(const glm::vec2 &top_left_corner, double window_size);
+            BoardUI(const glm::vec2 &top_left_corner, double window_size);
 
             /**
              * Displays grid of cells and board itself
@@ -37,11 +37,12 @@ namespace gameoflife {
              * Getter for 2d cells vector
              */
             const std::vector<std::vector<Cell>> &GetCells() const;
+            void SetCells(const std::vector<std::vector<Cell>>& cells);
 
         private:
             double window_size_;
             glm::vec2 top_left_corner_;
-            size_t kNumCells = 40;
+            size_t kNumCells = 40; ///TODO: change to const, create copy ctor
             std::vector<std::vector<Cell>> cells_;
         };
 
