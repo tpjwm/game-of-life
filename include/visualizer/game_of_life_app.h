@@ -30,7 +30,7 @@ namespace gameoflife {
             const double kMargin = 100;
 
         private:
-            Board board_;
+            BoardUI board_;
             GameEngine gameEngine_;
             /**
              * if true, player is allowed to draw and string is displayed

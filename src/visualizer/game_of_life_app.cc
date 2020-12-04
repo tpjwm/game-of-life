@@ -5,7 +5,7 @@ namespace gameoflife {
     namespace visualizer {
 
         GameOfLifeApp::GameOfLifeApp() : board_(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin),
-                                         gameEngine_(board_.GetCells()) {
+                                         gameEngine_() {
             ci::app::setWindowSize((int) kWindowSize, (int) kWindowSize);
             draw_phase_ = true;
         }
@@ -40,12 +40,21 @@ namespace gameoflife {
             if (event.getPos().x > kMargin * 2 && event.getPos().y > kWindowSize - kMargin * 0.85 &&
             event.getPos().x < kMargin * 2 + 100 && event.getPos().y < kWindowSize - kMargin * 0.85 + 50){
 
-                board_ = Board(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin); //memory leak?
+                board_ = BoardUI(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin);
+                draw_phase_ = true;
+            }
+
+            //start button
+            if (event.getPos().x > kMargin * 6 && event.getPos().y > kWindowSize - kMargin * 0.85 &&
+                event.getPos().x < kMargin * 6 + 100 && event.getPos().y < kWindowSize - kMargin * 0.85 + 50) {
+                draw_phase_ = false;
             }
         }
 
         void GameOfLifeApp::update() {
-            ///if !draw_phase_, call gameEngine to start manipulating cells
+            if(!draw_phase_){
+                board_.SetCells(gameEngine_.UpdateCells(board_.GetCells()));
+            }
         }
 
         void GameOfLifeApp::DrawStartButton() const {

@@ -11,9 +11,11 @@
 namespace gameoflife {
     class GameEngine {
     public:
-        GameEngine(const std::vector<std::vector<Cell>> &cells);
-
+        GameEngine();
+        std::vector<std::vector<Cell>> UpdateCells(const std::vector<std::vector<Cell>> &cells);
     private:
+
+        int GetLivingNeighbors(const std::vector<std::vector<Cell>> &cells, size_t row, size_t col);
     };
 
 } //namespace gameoflife
