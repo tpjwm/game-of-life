@@ -71,7 +71,7 @@ namespace gameoflife {
 
                 if (mouse_coords.x >= top_left.x && mouse_coords.y >= top_left.y
                     && mouse_coords.x < top_left.x + size && mouse_coords.y < top_left.y + size) {
-                    cells_[i][j].SetLife(true);
+                    cells_[i][j].SetLife(!cells_[i][j].IsAlive()); //flips "life" value
                 }
             }
         }

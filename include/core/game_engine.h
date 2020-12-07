@@ -37,7 +37,7 @@ namespace gameoflife {
 
         /**
          * Shades the cell at the position given.
-         * Makes it "alive"
+         * Flips the value of the cell (from alive to dead or dead to alive)
          *
          * @param mouse_coords - coords of where mouse was pressed down
          */
