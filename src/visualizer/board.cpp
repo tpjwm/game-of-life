@@ -16,7 +16,8 @@ namespace gameoflife {
                 std::vector<Cell> row_of_cells;
                 for (size_t col = 0; col < num_cells; ++col) {
                     row_of_cells.emplace_back(size,
-                                              glm::vec2(top_left_corner.x + size * col,top_left_corner.y + row * size));
+                                              glm::vec2(top_left_corner.x + size * col,
+                                                        top_left_corner.y + row * size));
                 }
                 cells.push_back(row_of_cells);
             }
@@ -40,7 +41,7 @@ namespace gameoflife {
 
         }
 
-        GameEngine& BoardUI::GetGameEngine() {
+        GameEngine &BoardUI::GetGameEngine() {
             return game_engine_;
         }
     } //namespace visualizer

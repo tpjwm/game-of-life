@@ -5,29 +5,29 @@
 
 namespace gameoflife {
 
-    GameEngine::GameEngine(size_t num_cells){
+    GameEngine::GameEngine(size_t num_cells) {
         num_cells_ = num_cells;
     }
 
     void GameEngine::UpdateCells() {
         std::vector<std::vector<Cell>> future_cells = cells_; //need this or else updates conflict
 
-        for (size_t row = 1; row <cells_.size()-1; ++row) {
-            for (size_t col = 1; col < cells_[row].size()-1; ++col) {
+        for (size_t row = 1; row < cells_.size() - 1; ++row) {
+            for (size_t col = 1; col < cells_[row].size() - 1; ++col) {
 
                 int alive_neighbors = GetNumLivingNeighbors(row, col);
 
                 ///Rules of life:
                 //if cell alive but lonely
-                if (cells_[row][col].IsAlive() && (alive_neighbors < 2)){
+                if (cells_[row][col].IsAlive() && (alive_neighbors < 2)) {
                     future_cells[row][col].SetLife(false);
                 }
-                //if cell alive but overpopulated
-                else if (cells_[row][col].IsAlive() && (alive_neighbors > 3)){
+                    //if cell alive but overpopulated
+                else if (cells_[row][col].IsAlive() && (alive_neighbors > 3)) {
                     future_cells[row][col].SetLife(false);
                 }
-                //if cell is dead but has 3 neighbors
-                else if (!cells_[row][col].IsAlive() && (alive_neighbors == 3)){
+                    //if cell is dead but has 3 neighbors
+                else if (!cells_[row][col].IsAlive() && (alive_neighbors == 3)) {
                     future_cells[row][col].SetLife(true);
                 }
             }
@@ -40,22 +40,22 @@ namespace gameoflife {
         size_t alive_neighbors = 0;
 
         //for each cell immediately around the cell being examined
-        for(int i = -1; i <= 1; i++){
-            for (int j = -1; j<= 1; j++){
-                if (cells_[row + i][col + j].IsAlive()){
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (cells_[row + i][col + j].IsAlive()) {
                     alive_neighbors++;
                 }
             }
         }
         //subtract the cell's life value from alive_neighbors if it is alive
-        if (cells_[row][col].IsAlive()){
+        if (cells_[row][col].IsAlive()) {
             alive_neighbors--;
         }
 
         return alive_neighbors;
     }
 
-    const std::vector<std::vector<Cell>> & GameEngine::GetCells() const {
+    const std::vector<std::vector<Cell>> &GameEngine::GetCells() const {
         return cells_;
     }
 

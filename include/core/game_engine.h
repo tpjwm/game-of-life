@@ -27,10 +27,10 @@ namespace gameoflife {
         void UpdateCells();
 
         //Getter for 2D cells vector
-        const std::vector<std::vector<Cell>> & GetCells() const;
+        const std::vector<std::vector<Cell>> &GetCells() const;
 
         //Setter for 2D cells vector
-        void SetCells(const std::vector<std::vector<Cell>>& cells);
+        void SetCells(const std::vector<std::vector<Cell>> &cells);
 
         //Getter for number of cells
         size_t GetNumCells() const;
@@ -41,7 +41,8 @@ namespace gameoflife {
          *
          * @param mouse_coords - coords of where mouse was pressed down
          */
-        void ShadeCell(const glm::vec2& mouse_coords);
+        void ShadeCell(const glm::vec2 &mouse_coords);
+
     private:
         /**
          * Calculates the amount of living neighbors around a cell at a particular

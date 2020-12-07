@@ -4,7 +4,7 @@ namespace gameoflife {
 
     namespace visualizer {
 
-        GameOfLifeApp::GameOfLifeApp() : board_(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin, kNumCells){
+        GameOfLifeApp::GameOfLifeApp() : board_(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin, kNumCells) {
             ci::app::setWindowSize((int) kWindowSize, (int) kWindowSize);
             draw_phase_ = true;
         }
@@ -37,7 +37,7 @@ namespace gameoflife {
 
             //reset button
             if (event.getPos().x > kMargin * 2 && event.getPos().y > kWindowSize - kMargin * 0.85 &&
-            event.getPos().x < kMargin * 2 + 100 && event.getPos().y < kWindowSize - kMargin * 0.85 + 50){
+                event.getPos().x < kMargin * 2 + 100 && event.getPos().y < kWindowSize - kMargin * 0.85 + 50) {
 
                 board_ = BoardUI(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin, kNumCells);
                 draw_phase_ = true;
@@ -51,7 +51,7 @@ namespace gameoflife {
         }
 
         void GameOfLifeApp::update() {
-            if(!draw_phase_){
+            if (!draw_phase_) {
                 board_.GetGameEngine().UpdateCells(); //TODO: add something to slow update (sleep)
             }
         }
@@ -68,7 +68,8 @@ namespace gameoflife {
             ci::gl::drawSolidRect(bounding_box);
 
             ci::gl::drawStringCentered("Start", glm::vec2(top_left_corner.x + window_size,
-                                                          top_left_corner.y + window_size / 3.5), //3.5 is arbitrary for centering
+                                                          top_left_corner.y +
+                                                          window_size / 3.5), //3.5 is arbitrary for centering
                                        ci::Color(255, 255, 255), ci::Font("Arial", 24.0f));
         }
 
@@ -84,7 +85,8 @@ namespace gameoflife {
             ci::gl::drawSolidRect(bounding_box);
 
             ci::gl::drawStringCentered("Reset", glm::vec2(top_left_corner.x + window_size,
-                                                          top_left_corner.y + window_size / 3.5), //3.5 is arbitrary for centering
+                                                          top_left_corner.y +
+                                                          window_size / 3.5), //3.5 is arbitrary for centering
                                        ci::Color(255, 255, 255), ci::Font("Arial", 24.0f));
         }
 

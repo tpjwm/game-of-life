@@ -25,7 +25,7 @@ namespace gameoflife {
              */
             void Draw() const;
 
-            GameEngine& GetGameEngine();
+            GameEngine &GetGameEngine();
 
         private:
             double window_size_;
