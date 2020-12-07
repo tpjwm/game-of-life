@@ -4,8 +4,7 @@ namespace gameoflife {
 
     namespace visualizer {
 
-        GameOfLifeApp::GameOfLifeApp() : board_(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin),
-                                         gameEngine_() {
+        GameOfLifeApp::GameOfLifeApp() : board_(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin, kNumCells){
             ci::app::setWindowSize((int) kWindowSize, (int) kWindowSize);
             draw_phase_ = true;
         }
@@ -33,14 +32,14 @@ namespace gameoflife {
         void GameOfLifeApp::mouseDown(ci::app::MouseEvent event) {
             //shade cell logic
             if (draw_phase_) {
-                board_.ShadeCell(event.getPos());
+                board_.GetGameEngine().ShadeCell(event.getPos());
             }
 
             //reset button
             if (event.getPos().x > kMargin * 2 && event.getPos().y > kWindowSize - kMargin * 0.85 &&
             event.getPos().x < kMargin * 2 + 100 && event.getPos().y < kWindowSize - kMargin * 0.85 + 50){
 
-                board_ = BoardUI(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin);
+                board_ = BoardUI(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin, kNumCells);
                 draw_phase_ = true;
             }
 
@@ -53,7 +52,7 @@ namespace gameoflife {
 
         void GameOfLifeApp::update() {
             if(!draw_phase_){
-                board_.SetCells(gameEngine_.UpdateCells(board_.GetCells()));
+                board_.GetGameEngine().UpdateCells(); //TODO: add something to slow update (sleep)
             }
         }
 

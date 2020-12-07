@@ -3,7 +3,7 @@
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
-#include "core/game_engine.h"
+#include "visualizer/board.h"
 
 namespace gameoflife {
 
@@ -28,15 +28,16 @@ namespace gameoflife {
 
             const double kWindowSize = 875;
             const double kMargin = 100;
+            const size_t kNumCells = 40;
 
         private:
             BoardUI board_;
-            GameEngine gameEngine_;
             /**
              * if true, player is allowed to draw and string is displayed
              * if false, simulation runs and player is not allowed to shade
              */
             bool draw_phase_;
+
         };
 
     }  //namespace visualizer

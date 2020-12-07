@@ -50,7 +50,7 @@ namespace gameoflife {
         double size_;
         glm::vec2 top_left_corner_;
         bool alive_; //If true, shades cell, otherwise remains unshaded
-        float kLineWidth = 2; ///TODO copy ctor
+        float line_width_ = 2;
     };
 
 } //namespace gameoflife

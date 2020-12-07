@@ -18,7 +18,7 @@ namespace gameoflife {
 
         ci::Rectf bounding_box(top_left_corner_, bottom_right_corner);
 
-        ci::gl::drawStrokedRect(bounding_box, kLineWidth);
+        ci::gl::drawStrokedRect(bounding_box, line_width_);
         if (alive_) {
             ci::gl::color(0, 0, 0); //black
             ci::gl::drawSolidRect(bounding_box);
