@@ -36,3 +36,4 @@ with [Cinder][cinder].
 ## Controls
  - Reset Button - Resets the simulation and board
  - Start Button - Starts the simulation, disables user shading
+ - Left Click - On a cell to shade it or unshade it
