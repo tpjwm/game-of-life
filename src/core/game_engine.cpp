@@ -99,13 +99,13 @@ namespace gameoflife {
 
     void GameEngine::SpeedUp() {
         if (slow_down_millis_ >= 20) { //Don't want negative numbers for slow_down_millis
-            slow_down_millis_ -= 10;
+            slow_down_millis_ -= 15;
         }
     }
 
     void GameEngine::SlowDown() {
-        if (slow_down_millis_ < 1000) { //Don't want too high of a pause between updates
-            slow_down_millis_ += 10;
+        if (slow_down_millis_ < 600) { //Don't want too high of a pause between updates
+            slow_down_millis_ += 15;
         }
     }
 

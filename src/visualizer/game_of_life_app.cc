@@ -55,11 +55,13 @@ namespace gameoflife {
 
             //speed up button
             if (event.getPos().x > kTopLeftCornerSpeedUpBox.x && event.getPos().y > kTopLeftCornerSpeedUpBox.y &&
-            event.getPos().x < kBottomRightCornerSpeedUpBox.x && event.getPos().y < kBottomRightCornerSpeedUpBox.y){
+                event.getPos().x < kBottomRightCornerSpeedUpBox.x &&
+                event.getPos().y < kBottomRightCornerSpeedUpBox.y) {
                 board_.GetGameEngine().SpeedUp();
             }
             if (event.getPos().x > kTopLeftCornerSpeedDownBox.x && event.getPos().y > kTopLeftCornerSpeedDownBox.y &&
-            event.getPos().x < kBottomRightCornerSpeedDownBox.x && event.getPos().y < kBottomRightCornerSpeedDownBox.y){
+                event.getPos().x < kBottomRightCornerSpeedDownBox.x &&
+                event.getPos().y < kBottomRightCornerSpeedDownBox.y) {
                 board_.GetGameEngine().SlowDown();
             }
         }
@@ -78,7 +80,7 @@ namespace gameoflife {
             ci::gl::drawSolidRect(bounding_box);
 
             //Start String
-            ci::gl::drawStringCentered("Start", kStringStartPos,ci::Color(255, 255, 255),
+            ci::gl::drawStringCentered("Start", kStringStartPos, ci::Color(255, 255, 255),
                                        ci::Font("Arial", 24.0f));
         }
 
@@ -90,25 +92,28 @@ namespace gameoflife {
             ci::gl::drawSolidRect(bounding_box);
 
             //Reset String
-            ci::gl::drawStringCentered("Reset", kStringResetPos,ci::Color(255, 255, 255),
+            ci::gl::drawStringCentered("Reset", kStringResetPos, ci::Color(255, 255, 255),
                                        ci::Font("Arial", 24.0f));
         }
 
-        void GameOfLifeApp::DrawSpeedButtons() const{
+        void GameOfLifeApp::DrawSpeedButtons() const {
             ci::gl::color(0.7f, 0.7f, 0.7f); //grey
 
             //Speed up button
-
             ci::Rectf bounding_box1(kTopLeftCornerSpeedUpBox, kBottomRightCornerSpeedUpBox);
             ci::gl::drawSolidRect(bounding_box1);
+            ci::gl::drawStringCentered("Up", kStringUpPos, ci::Color(0, 255, 0),
+                                       ci::Font("Arial", 20.0f));
 
             //String "Speed"
-            ci::gl::drawStringCentered("Speed", glm::vec2(kStringSpeedPos),
-                                       ci::Color(255, 255, 255), ci::Font("Arial", 24.0f));
+            ci::gl::drawStringCentered("Speed", kStringSpeedPos, ci::Color(255, 255, 255),
+                                       ci::Font("Arial", 24.0f));
 
             //Speed down button
             ci::Rectf bounding_box2(kTopLeftCornerSpeedDownBox, kBottomRightCornerSpeedDownBox);
             ci::gl::drawSolidRect(bounding_box2);
+            ci::gl::drawStringCentered("Down", kStringDownPos, ci::Color(255, 0, 0),
+                                       ci::Font("Arial", 20.0f));
         }
 
     }  //namespace visualizer

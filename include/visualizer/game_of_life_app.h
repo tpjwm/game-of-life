@@ -46,36 +46,52 @@ namespace gameoflife {
             /**
              * The following constants are used for handling the speed buttons
              */
-            const float kSpeedBoxesWindowSize = 20;
-            const glm::vec2 kTopLeftCornerSpeedUpBox = glm::vec2(kMargin * 4.3, kWindowSize - kMargin * 0.65);
+            const float kSpeedBoxesWindowSize = 25;
+
+            //SPEED UP
+            const glm::vec2 kTopLeftCornerSpeedUpBox = glm::vec2(kMargin * 4.3, kWindowSize - kMargin * 0.7);
             const glm::vec2 kBottomRightCornerSpeedUpBox = glm::vec2(kTopLeftCornerSpeedUpBox +
-                    glm::vec2(kSpeedBoxesWindowSize, kSpeedBoxesWindowSize));
-            const glm::vec2 kStringSpeedPos = glm::vec2(kTopLeftCornerSpeedUpBox.x + kSpeedBoxesWindowSize / 3,
-                                                        kTopLeftCornerSpeedUpBox.y - kSpeedBoxesWindowSize * 1.3);
+                                                                     glm::vec2(kSpeedBoxesWindowSize * 2,
+                                                                               kSpeedBoxesWindowSize));
+            const glm::vec2 kStringUpPos = glm::vec2((kTopLeftCornerSpeedUpBox.x + kBottomRightCornerSpeedUpBox.x) / 2,
+                                                     (kTopLeftCornerSpeedUpBox.y + kBottomRightCornerSpeedUpBox.y) / 2 -
+                                                     7.5);
+
+            //TITLE
+            const glm::vec2 kStringSpeedPos = glm::vec2(kTopLeftCornerSpeedUpBox.x + kSpeedBoxesWindowSize / 1.1,
+                                                        kTopLeftCornerSpeedUpBox.y - kSpeedBoxesWindowSize * 1.1);
+
+            //SPEED DOWN
             const glm::vec2 kTopLeftCornerSpeedDownBox = glm::vec2(
-                    kTopLeftCornerSpeedUpBox.x,kTopLeftCornerSpeedUpBox.y + kSpeedBoxesWindowSize*1.5);
+                    kTopLeftCornerSpeedUpBox.x, kTopLeftCornerSpeedUpBox.y + kSpeedBoxesWindowSize * 1.5);
             const glm::vec2 kBottomRightCornerSpeedDownBox = glm::vec2(kTopLeftCornerSpeedDownBox +
-                    glm::vec2(kSpeedBoxesWindowSize, kSpeedBoxesWindowSize));
+                                                                       glm::vec2(kSpeedBoxesWindowSize * 2,
+                                                                                 kSpeedBoxesWindowSize));
+            const glm::vec2 kStringDownPos = glm::vec2(
+                    (kTopLeftCornerSpeedDownBox.x + kBottomRightCornerSpeedDownBox.x) / 2,
+                    (kTopLeftCornerSpeedDownBox.y + kBottomRightCornerSpeedDownBox.y) / 2 - 7.5);
 
             /**
              * The following constants are used for handling the reset button
              */
-             const float kResetBoxWindowSize = 50;
-             const glm::vec2 kTopLeftCornerReset =  glm::vec2(kMargin * 2, kWindowSize - kMargin * 0.85);
-             const glm::vec2 kBottomRightCornerReset = glm::vec2(kTopLeftCornerReset +
-                     glm::vec2(kResetBoxWindowSize * 2, kResetBoxWindowSize));
-             const glm::vec2 kStringResetPos = glm::vec2(kTopLeftCornerReset.x + kResetBoxWindowSize
-                     ,kTopLeftCornerReset.y + kResetBoxWindowSize / 3.5);
+            const float kResetBoxWindowSize = 50;
+            const glm::vec2 kTopLeftCornerReset = glm::vec2(kMargin * 2, kWindowSize - kMargin * 0.85);
+            const glm::vec2 kBottomRightCornerReset = glm::vec2(kTopLeftCornerReset +
+                                                                glm::vec2(kResetBoxWindowSize * 2,
+                                                                          kResetBoxWindowSize));
+            const glm::vec2 kStringResetPos = glm::vec2(kTopLeftCornerReset.x + kResetBoxWindowSize,
+                                                        kTopLeftCornerReset.y + kResetBoxWindowSize / 3.5);
 
-             /**
-              * The following constants are used for handling the start button
-              */
-              const float kStartBoxWindowSize = 50;
-              const glm::vec2 kTopLeftCornerStart = glm::vec2(kMargin * 6, kWindowSize - kMargin * 0.85);
-              const glm::vec2 kBottomRightCornerStart = glm::vec2(kTopLeftCornerStart +
-                      glm::vec2(kStartBoxWindowSize * 2, kStartBoxWindowSize));
-              const glm::vec2 kStringStartPos = glm::vec2(kTopLeftCornerStart.x + kStartBoxWindowSize,
-                                                          kTopLeftCornerStart.y + kStartBoxWindowSize / 3.5);
+            /**
+             * The following constants are used for handling the start button
+             */
+            const float kStartBoxWindowSize = 50;
+            const glm::vec2 kTopLeftCornerStart = glm::vec2(kMargin * 6, kWindowSize - kMargin * 0.85);
+            const glm::vec2 kBottomRightCornerStart = glm::vec2(kTopLeftCornerStart +
+                                                                glm::vec2(kStartBoxWindowSize * 2,
+                                                                          kStartBoxWindowSize));
+            const glm::vec2 kStringStartPos = glm::vec2(kTopLeftCornerStart.x + kStartBoxWindowSize,
+                                                        kTopLeftCornerStart.y + kStartBoxWindowSize / 3.5);
         };
 
     }  //namespace visualizer
