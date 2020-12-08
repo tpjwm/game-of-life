@@ -38,6 +38,6 @@ that reset board.
 
 ### Stretch Goals:
 * Add button to display different patterns that commonly occur in the game.
-* Add colors or improve graphics of game.
+* Add a way to speed up and slow down game.
 * Look into adding music or sound.
 
