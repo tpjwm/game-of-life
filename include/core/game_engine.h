@@ -42,7 +42,8 @@ namespace gameoflife {
          * @param mouse_coords - coords of where mouse was pressed down
          */
         void ShadeCell(const glm::vec2 &mouse_coords);
-
+        void SpeedUp();
+        void SlowDown();
     private:
         /**
          * Calculates the amount of living neighbors around a cell at a particular
@@ -59,6 +60,7 @@ namespace gameoflife {
 
         std::vector<std::vector<Cell>> cells_;
         size_t num_cells_;
+        size_t slow_down_millis_ = 50; //how much to slow the simulation by for each time update cell is called
 
     };
 
