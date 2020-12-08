@@ -7,6 +7,8 @@
 #define GAME_OF_LIFE_PROJECT_GAME_ENGINE_H
 
 #include "core/cell.h"
+#include "cinder/audio/Voice.h"
+#include "cinder/app/App.h"
 
 namespace gameoflife {
     class GameEngine {
@@ -44,6 +46,8 @@ namespace gameoflife {
         void ShadeCell(const glm::vec2 &mouse_coords);
         void SpeedUp();
         void SlowDown();
+        void PlayMusic();
+        void StopMusic();
     private:
         /**
          * Calculates the amount of living neighbors around a cell at a particular
@@ -62,6 +66,11 @@ namespace gameoflife {
         size_t num_cells_;
         size_t slow_down_millis_ = 50; //how much to slow the simulation by for each time update cell is called
 
+        std::vector<std::string> song_names_;
+
+        std::string song_path_ = "1.wav";
+        ci::audio::SourceFileRef source_file_ = ci::audio::load(ci::app::loadAsset(song_path_));
+        ci::audio::VoiceRef mVoice;
     };
 
 } //namespace gameoflife

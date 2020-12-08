@@ -4,16 +4,28 @@
 #include "core/game_engine.h"
 #include <chrono>
 #include <thread>
-
+#include <Windows.h>
+#include <Mmsystem.h>
+#include <winnt.h>
+#include <winbase.h>
 namespace gameoflife {
 
     GameEngine::GameEngine(size_t num_cells) {
         num_cells_ = num_cells;
+        song_names_.emplace_back("1.wav");
+        song_names_.emplace_back("2.wav");
+        song_names_.emplace_back("3.wav");
+        song_names_.emplace_back("4.wav");
+        song_names_.emplace_back("5.wav");
+        song_names_.emplace_back("6.wav");
+        song_names_.emplace_back("7.wav");
+        song_names_.emplace_back("8.wav");
+        int randNum = rand()%(8);
+        song_path_ = song_names_[randNum];
     }
 
     void GameEngine::UpdateCells() {
         std::vector<std::vector<Cell>> future_cells = cells_; //need this or else updates conflict
-
         for (size_t row = 1; row < cells_.size() - 1; ++row) {
             for (size_t col = 1; col < cells_[row].size() - 1; ++col) {
 
@@ -31,6 +43,7 @@ namespace gameoflife {
                     //if cell is dead but has 3 neighbors
                 else if (!cells_[row][col].IsAlive() && (alive_neighbors == 3)) {
                     future_cells[row][col].SetLife(true);
+
                 }
             }
         }
@@ -94,6 +107,16 @@ namespace gameoflife {
         if (slow_down_millis_ < 1000){ //Don't want too high of a pause between updates
             slow_down_millis_ += 10;
         }
+    }
+
+    void GameEngine::PlayMusic() {
+        source_file_ = ci::audio::load(ci::app::loadAsset(song_path_));
+        mVoice = ci::audio::Voice::create(source_file_);
+        mVoice->start();
+    }
+
+    void GameEngine::StopMusic() {
+        mVoice = nullptr; //stops any music from playing (note: mVoice->stop() crashes on reset)
     }
 
 } //namespace gameoflife

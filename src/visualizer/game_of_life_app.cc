@@ -41,14 +41,16 @@ namespace gameoflife {
             if (event.getPos().x > kTopLeftCornerReset.x && event.getPos().y > kTopLeftCornerReset.y &&
                 event.getPos().x < kBottomRightCornerReset.x && event.getPos().y < kBottomRightCornerReset.y) {
 
-                board_ = BoardUI(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin, kNumCells);
+                board_ = BoardUI(glm::vec2(kMargin, kMargin), kWindowSize - 2 * kMargin, kNumCells); //create new board
                 draw_phase_ = true;
+                board_.GetGameEngine().StopMusic(); //stop the ingame music
             }
 
             //start button
             if (event.getPos().x > kTopLeftCornerStart.x && event.getPos().y > kTopLeftCornerStart.y &&
                 event.getPos().x < kBottomRightCornerStart.x && event.getPos().y < kBottomRightCornerStart.y) {
                 draw_phase_ = false;
+                board_.GetGameEngine().PlayMusic(); //play music
             }
 
             //speed up button
