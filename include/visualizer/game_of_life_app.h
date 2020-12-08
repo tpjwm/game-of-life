@@ -14,6 +14,7 @@ namespace gameoflife {
  */
         class GameOfLifeApp : public ci::app::App {
         public:
+
             GameOfLifeApp();
 
             void draw() override;
@@ -33,12 +34,18 @@ namespace gameoflife {
             const size_t kNumCells = 40;
 
         private:
+
             BoardUI board_;
+
             /**
              * if true, player is allowed to draw and string is displayed
              * if false, simulation runs and player is not allowed to shade
              */
             bool draw_phase_;
+
+            /**
+             * The following constants are used for handling the speed buttons
+             */
             const float kSpeedBoxesWindowSize = 20;
             const glm::vec2 kTopLeftCornerSpeedUpBox = glm::vec2(kMargin * 4.3, kWindowSize - kMargin * 0.65);
             const glm::vec2 kBottomRightCornerSpeedUpBox = glm::vec2(kTopLeftCornerSpeedUpBox +
@@ -50,6 +57,25 @@ namespace gameoflife {
             const glm::vec2 kBottomRightCornerSpeedDownBox = glm::vec2(kTopLeftCornerSpeedDownBox +
                     glm::vec2(kSpeedBoxesWindowSize, kSpeedBoxesWindowSize));
 
+            /**
+             * The following constants are used for handling the reset button
+             */
+             const float kResetBoxWindowSize = 50;
+             const glm::vec2 kTopLeftCornerReset =  glm::vec2(kMargin * 2, kWindowSize - kMargin * 0.85);
+             const glm::vec2 kBottomRightCornerReset = glm::vec2(kTopLeftCornerReset +
+                     glm::vec2(kResetBoxWindowSize * 2, kResetBoxWindowSize));
+             const glm::vec2 kStringResetPos = glm::vec2(kTopLeftCornerReset.x + kResetBoxWindowSize
+                     ,kTopLeftCornerReset.y + kResetBoxWindowSize / 3.5);
+
+             /**
+              * The following constants are used for handling the start button
+              */
+              const float kStartBoxWindowSize = 50;
+              const glm::vec2 kTopLeftCornerStart = glm::vec2(kMargin * 6, kWindowSize - kMargin * 0.85);
+              const glm::vec2 kBottomRightCornerStart = glm::vec2(kTopLeftCornerStart +
+                      glm::vec2(kStartBoxWindowSize * 2, kStartBoxWindowSize));
+              const glm::vec2 kStringStartPos = glm::vec2(kTopLeftCornerStart.x + kStartBoxWindowSize,
+                                                          kTopLeftCornerStart.y + kStartBoxWindowSize / 3.5);
         };
 
     }  //namespace visualizer
