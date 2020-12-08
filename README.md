@@ -1,5 +1,5 @@
 # Conway's Game Of Life
-![Image of UI](https://i.imgur.com/gmYfxC2.png)
+![Image of UI](https://i.imgur.com/VHR1lf5.png)
 ![Gif of a glider](https://i.imgur.com/t1OJW8K.gif)
 
 This program runs Conway's Game Of Life using Cinder, a C++ graphics library.
@@ -37,3 +37,5 @@ with [Cinder][cinder].
  - Reset Button - Resets the simulation and board
  - Start Button - Starts the simulation, disables user shading
  - Left Click - On a cell to shade it or unshade it
+ - Speed Up - Increase the simulation speed
+ - Speed Down - Decrease the simulation speed
