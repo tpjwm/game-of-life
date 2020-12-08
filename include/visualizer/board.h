@@ -2,6 +2,7 @@
 // Created by dimit on 11/14/2020.
 //
 #pragma once
+
 #ifndef GAME_OF_LIFE_BOARD_H
 #define GAME_OF_LIFE_BOARD_H
 

@@ -15,6 +15,9 @@ namespace gameoflife {
     public:
         /**
          * Default constructor for GameEngine
+         * Stores num_cells in num_cells_
+         * Creates the song path vector and assigns a random song to song_path_
+         *
          * @param num_cells - the number of cells for the side of the square board
          *                    (i.e if num_cells = 40, constructs a 40 x 40 vector)
          */
@@ -44,10 +47,27 @@ namespace gameoflife {
          * @param mouse_coords - coords of where mouse was pressed down
          */
         void ShadeCell(const glm::vec2 &mouse_coords);
+
+        /**
+         * Speeds up simulation by decreasing slow_down_millis_
+         */
         void SpeedUp();
+
+        /**
+         * Slows down simulation by increasing slow_down_millis_
+         */
         void SlowDown();
+
+        /**
+         * Plays the song in song_path_
+         */
         void PlayMusic();
+
+        /**
+         * Stops the current song - sets mVoice to nullptr
+         */
         void StopMusic();
+
     private:
         /**
          * Calculates the amount of living neighbors around a cell at a particular
@@ -63,13 +83,20 @@ namespace gameoflife {
         size_t GetNumLivingNeighbors(size_t row, size_t col);
 
         std::vector<std::vector<Cell>> cells_;
+
         size_t num_cells_;
+
         size_t slow_down_millis_ = 50; //how much to slow the simulation by for each time update cell is called
 
+        /**
+         * Following variables used for playing music
+         */
         std::vector<std::string> song_names_;
 
         std::string song_path_ = "1.wav";
+
         ci::audio::SourceFileRef source_file_ = ci::audio::load(ci::app::loadAsset(song_path_));
+
         ci::audio::VoiceRef mVoice;
     };
 

@@ -4,14 +4,12 @@
 #include "core/game_engine.h"
 #include <chrono>
 #include <thread>
-#include <Windows.h>
-#include <Mmsystem.h>
-#include <winnt.h>
-#include <winbase.h>
+
 namespace gameoflife {
 
     GameEngine::GameEngine(size_t num_cells) {
         num_cells_ = num_cells;
+
         song_names_.emplace_back("1.wav");
         song_names_.emplace_back("2.wav");
         song_names_.emplace_back("3.wav");
@@ -20,7 +18,9 @@ namespace gameoflife {
         song_names_.emplace_back("6.wav");
         song_names_.emplace_back("7.wav");
         song_names_.emplace_back("8.wav");
-        int randNum = rand()%(8);
+
+        int randNum = rand() % (song_names_.size()); //pick random song
+
         song_path_ = song_names_[randNum];
     }
 
@@ -98,13 +98,13 @@ namespace gameoflife {
     }
 
     void GameEngine::SpeedUp() {
-        if (slow_down_millis_ >= 20){ //Don't want negative numbers for slow_down_millis
+        if (slow_down_millis_ >= 20) { //Don't want negative numbers for slow_down_millis
             slow_down_millis_ -= 10;
         }
     }
 
     void GameEngine::SlowDown() {
-        if (slow_down_millis_ < 1000){ //Don't want too high of a pause between updates
+        if (slow_down_millis_ < 1000) { //Don't want too high of a pause between updates
             slow_down_millis_ += 10;
         }
     }
