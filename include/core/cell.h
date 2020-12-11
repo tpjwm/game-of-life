@@ -2,6 +2,7 @@
 // Created by dimit on 11/16/2020.
 //
 #pragma once
+
 #ifndef GAME_OF_LIFE_PROJECT_CELL_H
 #define GAME_OF_LIFE_PROJECT_CELL_H
 
@@ -50,7 +51,7 @@ namespace gameoflife {
         double size_;
         glm::vec2 top_left_corner_;
         bool alive_; //If true, shades cell, otherwise remains unshaded
-        float kLineWidth = 2; ///TODO copy ctor
+        float line_width_ = 2;
     };
 
 } //namespace gameoflife

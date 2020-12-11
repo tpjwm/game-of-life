@@ -6,20 +6,22 @@
 namespace gameoflife {
     namespace visualizer {
 
-        BoardUI::BoardUI(const glm::vec2 &top_left_corner, double window_size) {
+        BoardUI::BoardUI(const glm::vec2 &top_left_corner, double window_size, size_t num_cells)
+                : game_engine_(num_cells) {
             top_left_corner_ = top_left_corner;
             window_size_ = window_size;
-
-
-            double size = window_size_ / (float) kNumCells;
-            for (size_t row = 0; row < kNumCells; ++row) {
+            std::vector<std::vector<Cell>> cells;
+            double size = window_size_ / (float) num_cells;
+            for (size_t row = 0; row < num_cells; ++row) {
                 std::vector<Cell> row_of_cells;
-                for (size_t col = 0; col < kNumCells; ++col) {
+                for (size_t col = 0; col < num_cells; ++col) {
                     row_of_cells.emplace_back(size,
-                                              glm::vec2(top_left_corner.x + size * col,top_left_corner.y + row * size)); ///use local variables
+                                              glm::vec2(top_left_corner.x + size * col,
+                                                        top_left_corner.y + row * size));
                 }
-                cells_.push_back(row_of_cells);
+                cells.push_back(row_of_cells);
             }
+            game_engine_.SetCells(cells);
         }
 
         void BoardUI::Draw() const {
@@ -30,36 +32,18 @@ namespace gameoflife {
 
             ci::gl::drawSolidRect(bounding_box);
 
-            for (size_t i = 0; i < kNumCells; ++i) {
-                for (size_t j = 0; j < kNumCells; ++j) {
-                    cells_[i][j].Draw();
+            std::vector<std::vector<Cell>> cells = game_engine_.GetCells();
+            for (size_t i = 0; i < game_engine_.GetNumCells(); ++i) {
+                for (size_t j = 0; j < game_engine_.GetNumCells(); ++j) {
+                    cells[i][j].Draw();
                 }
             }
 
         }
 
-        void BoardUI::ShadeCell(const glm::vec2 &mouse_coords) {
-            for (size_t i = 0; i < kNumCells; ++i) {
-                for (size_t j = 0; j < kNumCells; ++j) {
-                    glm::vec2 top_left = cells_[i][j].GetTopLeftCorner();
-                    double size = cells_[i][j].GetSize();
-
-                    if (mouse_coords.x >= top_left.x && mouse_coords.y >= top_left.y
-                        && mouse_coords.x < top_left.x + size && mouse_coords.y < top_left.y + size) {
-                        cells_[i][j].SetLife(true);
-                    }
-                }
-            }
+        GameEngine &BoardUI::GetGameEngine() {
+            return game_engine_;
         }
-
-        const std::vector<std::vector<Cell>> &BoardUI::GetCells() const {
-            return cells_;
-        }
-
-        void BoardUI::SetCells(const std::vector<std::vector<Cell>> &cells) {
-            cells_ = cells;
-        }
-
     } //namespace visualizer
 
 } //namespace gameoflife
